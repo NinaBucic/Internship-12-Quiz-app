@@ -33,6 +33,8 @@
 }
 
 .quiz-footer .next-question-button,
+.go-back-button,
+.start-button,
 #submit-button {
   color: white;
   border: none;
@@ -49,6 +51,8 @@
 }
 
 .quiz-footer .next-question-button:hover,
+.go-back-button:hover,
+.start-button:hover,
 #submit-button:hover {
   background: var(--main-color-dark);
 }
