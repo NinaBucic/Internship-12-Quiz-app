@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <form class="config-container">
+      <h2 class="config-title">Quiz Configuration</h2>
+
+      <div class="config-option">
+        <h4 class="option-title">Select Category:</h4>
+        <select name="category" id="category">
+          <option value="27">Animals</option>
+          <option value="26">Celebrities</option>
+          <option value="25">Arts</option>
+          <option value="24">Politics</option>
+          <option value="23">History</option>
+          <option value="22">Geography</option>
+          <option value="21">Sports</option>
+          <option value="20">Mythology</option>
+          <option value="">Any Category</option>
+        </select>
+      </div>
+
+      <div class="config-option">
+        <h4 class="option-title">Select Difficulty:</h4>
+        <select name="difficulty" id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+
+      <div class="config-option">
+        <h4 class="option-title">Select Type:</h4>
+        <select name="game-type" id="game-type">
+          <option value="multiple">Multiple question</option>
+          <option value="boolean">True/False</option>
+        </select>
+      </div>
+
+      <button id="submit-button">Submit</button>
+    </form>
+  </body>
+</html>

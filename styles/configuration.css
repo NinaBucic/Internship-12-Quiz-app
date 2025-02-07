@@ -1,0 +1,47 @@
+.config-container {
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+  padding: 25px;
+  width: 400px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.13);
+}
+
+.config-container .config-title {
+  font-size: 1.3rem;
+}
+
+.config-container .config-option {
+  margin-top: 25px;
+}
+
+.config-option .option-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.config-option select {
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 5px;
+  background: var(--main-color-lighter);
+  border: 1px solid var(--main-color-light);
+  width: 50%;
+}
+
+#submit-button {
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 35px;
+  background: var(--main-color);
+  padding: 10px 25px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+#submit-button:hover {
+  background: var(--main-color-dark);
+}

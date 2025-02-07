@@ -1,0 +1,28 @@
+@import url("configuration.css");
+
+@font-face {
+  font-family: Montserrat;
+  src: url(../assets/fonts/Montserrat-Regular.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat, sans-serif;
+  --main-color: rgb(117, 11, 117);
+  --main-color-light: rgb(132, 75, 132);
+  --main-color-lighter: rgb(252, 208, 252);
+  --main-color-dark: rgb(60, 7, 60);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 15px;
+
+  background: var(--main-color);
+}
