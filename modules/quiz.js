@@ -3,11 +3,15 @@ import { fetchQuestions } from "./api.js";
 const form = document.querySelector(".config-container");
 const submitButton = document.querySelector("#submit-button");
 const startContainer = document.querySelector(".start-container");
+const nextButton = document.querySelector(".next-question-button");
 const startButton = document.querySelector(".start-button");
 const backButtons = document.querySelectorAll(".go-back-button");
 const quizContainer = document.querySelector(".quiz-container");
+const scoreStatus = document.querySelector(".score-status");
 
 let questions = [];
+let currentQuestionIndex = 0;
+let score = 0;
 
 submitButton.addEventListener("click", async (event) => {
   event.preventDefault();
@@ -42,7 +46,7 @@ startButton.addEventListener("click", () => {
     startContainer.style.display = "none";
     quizContainer.style.display = "block";
 
-    displayQuestion(questions[0], 0);
+    displayQuestion();
   }
 });
 
@@ -55,9 +59,27 @@ backButtons.forEach((button) => {
   });
 });
 
-function displayQuestion(questionData, index) {
+nextButton.addEventListener("click", () => {
+  currentQuestionIndex++;
+
+  if (currentQuestionIndex < questions.length) {
+    displayQuestion();
+  } else {
+    showResults();
+  }
+});
+
+function displayQuestion() {
+  const questionData = questions[currentQuestionIndex];
   const questionText = document.querySelector(".question-text");
   const answerOptions = document.querySelector(".answer-options");
+  const questionStatus = document.querySelector(".question-status");
+
+  scoreStatus.textContent = `Score: ${score} / ${questions.length}`;
+  questionStatus.innerHTML = `<b>${currentQuestionIndex + 1}</b> of <b>${
+    questions.length
+  }</b> Questions`;
+  nextButton.style.visibility = "hidden";
 
   questionText.textContent = questionData.question;
   answerOptions.innerHTML = "";
@@ -72,6 +94,31 @@ function displayQuestion(questionData, index) {
     const li = document.createElement("li");
     li.classList.add("answer-option");
     li.textContent = answer;
+    li.addEventListener("click", () =>
+      checkAnswer(li, questionData.correct_answer)
+    );
     answerOptions.appendChild(li);
   });
+}
+
+function checkAnswer(selectedOption, correctAnswer) {
+  const answerOptions = document.querySelectorAll(".answer-option");
+
+  answerOptions.forEach((option) => (option.style.pointerEvents = "none"));
+
+  if (selectedOption.textContent === correctAnswer) {
+    selectedOption.classList.add("correct");
+    score++;
+  } else {
+    selectedOption.classList.add("incorrect");
+
+    answerOptions.forEach((option) => {
+      if (option.textContent === correctAnswer) {
+        option.classList.add("correct");
+      }
+    });
+  }
+
+  scoreStatus.textContent = `Score: ${score} / ${questions.length}`;
+  nextButton.style.visibility = "visible";
 }
