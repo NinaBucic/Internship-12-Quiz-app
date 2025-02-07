@@ -1,4 +1,5 @@
 import { fetchQuestions } from "./api.js";
+import { showResults, saveQuizResult, showQuizHistory } from "./result.js";
 
 const form = document.querySelector(".config-container");
 const submitButton = document.querySelector("#submit-button");
@@ -9,6 +10,7 @@ const backButtons = document.querySelectorAll(".go-back-button");
 const quizContainer = document.querySelector(".quiz-container");
 const scoreStatus = document.querySelector(".score-status");
 const timerDisplay = document.querySelector(".time-duration");
+const historyContainer = document.querySelector(".quiz-history-container");
 
 let questions = [];
 let currentQuestionIndex = 0;
@@ -18,8 +20,17 @@ let confirmTimeout;
 let timeLeft;
 let selectedOption = null;
 
+document.addEventListener("DOMContentLoaded", () => {
+  showQuizHistory();
+});
+
 submitButton.addEventListener("click", async (event) => {
   event.preventDefault();
+
+  questions = [];
+  currentQuestionIndex = 0;
+  score = 0;
+  selectedOption = null;
 
   const category = document.getElementById("category").value;
   const difficulty = document.getElementById("difficulty").value;
@@ -34,10 +45,10 @@ submitButton.addEventListener("click", async (event) => {
   if (category) params.append("category", category);
 
   questions = await fetchQuestions(params);
-  console.log(questions);
 
   if (questions.length > 0) {
     form.style.display = "none";
+    historyContainer.style.display = "none";
     startContainer.style.display = "block";
   } else {
     alert(
@@ -58,6 +69,7 @@ startButton.addEventListener("click", () => {
 backButtons.forEach((button) => {
   button.addEventListener("click", () => {
     document.querySelector(".start-container").style.display = "none";
+    document.querySelector(".quiz-history-container").style.display = "block";
     document.querySelector(".quiz-container").style.display = "none";
     document.querySelector(".result-container").style.display = "none";
     document.querySelector(".config-container").style.display = "block";
@@ -70,7 +82,9 @@ nextButton.addEventListener("click", () => {
   if (currentQuestionIndex < questions.length) {
     displayQuestion();
   } else {
-    showResults();
+    showResults(score, questions.length);
+    saveQuizResult(score, questions);
+    showQuizHistory();
   }
 });
 

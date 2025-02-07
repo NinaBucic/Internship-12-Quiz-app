@@ -74,10 +74,7 @@
 
     <div class="result-container">
       <h2 class="result-title">Quiz Completed!</h2>
-      <p class="result-message">
-        Final Score: 1 / 5<br />
-        Great!
-      </p>
+      <p class="result-message"></p>
       <button class="go-back-button">Back to Main Menu</button>
     </div>
 
@@ -86,7 +83,13 @@
       <button class="go-back-button">Back to Main Menu</button>
     </div>
 
+    <section class="quiz-history-container">
+      <h3>Previous Quiz Results:</h3>
+      <div class="quiz-history"></div>
+    </section>
+
     <script type="module" src="./modules/api.js"></script>
+    <script type="module" src="./modules/result.js"></script>
     <script type="module" src="./modules/quiz.js"></script>
   </body>
 </html>
