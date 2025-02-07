@@ -1,4 +1,5 @@
 .config-container {
+  display: none;
   background-color: white;
   border-radius: 10px;
   text-align: center;
@@ -31,6 +32,7 @@
   width: 50%;
 }
 
+.quiz-footer .next-question-button,
 #submit-button {
   color: white;
   border: none;
@@ -42,6 +44,17 @@
   border-radius: 5px;
 }
 
+.quiz-footer .next-question-button {
+  margin-top: 0px;
+}
+
+.quiz-footer .next-question-button:hover,
 #submit-button:hover {
   background: var(--main-color-dark);
+}
+
+@media screen and (max-width: 768px) {
+  .config-container {
+    width: 300px;
+  }
 }

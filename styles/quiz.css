@@ -1,0 +1,111 @@
+.quiz-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.13);
+  width: 500px;
+}
+
+.quiz-header {
+  display: flex;
+  align-items: center;
+  padding: 15px 25px;
+  justify-content: space-between;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-header .score-status {
+  font-size: 1.4rem;
+}
+
+.quiz-header .quiz-timer {
+  display: flex;
+  width: 70px;
+  padding: 7px 9px;
+  border-radius: 5px;
+  background: var(--main-color);
+  color: white;
+  align-items: center;
+  gap: 3px;
+}
+
+.quiz-timer .timer-icon {
+  height: 1.2rem;
+}
+
+.quiz-content {
+  padding: 20px 25px;
+}
+
+.quiz-content .question-text {
+  font-size: 1.5rem;
+}
+
+.quiz-content .answer-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  list-style: none;
+  margin-top: 20px;
+}
+
+.quiz-content .answer-option {
+  padding: 10px 15px;
+  background: var(--main-color-lighter);
+  border-radius: 5px;
+  border: 1px solid var(--main-color-light);
+  cursor: pointer;
+}
+
+.quiz-content .answer-option:hover {
+  background: var(--main-color-light);
+}
+
+.answer-option.correct,
+.answer-option.correct:hover {
+  border-color: var(--correct-border);
+  background: var(--correct-background);
+  color: var(--correct-color);
+}
+
+.answer-option.incorrect,
+.answer-option.incorrect:hover {
+  border-color: var(--incorrect-border);
+  background: var(--incorrect-background);
+  color: var(--incorrect-color);
+}
+
+.quiz-footer {
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--main-color-lighter);
+}
+
+.quiz-footer .next-question-button {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .quiz-container {
+    width: 300px;
+  }
+
+  .quiz-footer,
+  .quiz-header,
+  .quiz-content {
+    padding: 10px 12px;
+  }
+
+  .quiz-header .score-status,
+  .quiz-content .question-text {
+    font-size: 1rem;
+  }
+
+  .quiz-content .answer-options {
+    gap: 8px;
+  }
+}
