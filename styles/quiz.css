@@ -90,6 +90,10 @@
   padding: 10px 15px;
 }
 
+.answer-option.selected-answer {
+  background: var(--main-color-light);
+}
+
 @media screen and (max-width: 768px) {
   .quiz-container {
     width: 300px;
